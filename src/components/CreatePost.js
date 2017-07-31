@@ -10,8 +10,9 @@ export default class CreatePost extends Component {
       }
       this.handleNameChange = this.handleNameChange.bind(this)
       this.handleTitleChange = this.handleTitleChange.bind(this)
-      this.handleBlogChange =this.handleBlogChange.bind(this)
+      this.handleBlogChange = this.handleBlogChange.bind(this)
       this.handleSubmit = this.handleSubmit.bind(this)
+      // this.handleRedirect = this.handleRedirect.bind(this)
     }
 
   handleNameChange (e) {
@@ -23,6 +24,15 @@ export default class CreatePost extends Component {
   handleBlogChange (e) {
     this.setState({blog: e.target.value})
   }
+
+  // handleRedirect (res) {
+  //   if (res.status === 200) {
+  //     // redirect here
+  //     window.location.href = 'http://localhost:3000/'
+  //   } else {
+  //     console.log('Error')
+  //   }
+  // }
 
   handleSubmit (event) {
     event.preventDefault()
@@ -39,8 +49,7 @@ export default class CreatePost extends Component {
     }
   ).then(response => {
     console.log(response, 'yay')
-  })
-  .catch(err => {
+  }).catch(err => {
     console.log(err, 'boo!')
   })
     this.setState({name: '', title: '', blog: ''})
@@ -64,6 +73,9 @@ export default class CreatePost extends Component {
           </div>
           <button type="submit" className="btn btn-primary">Submit Post</button>
         </form>
+        <div>
+          <a className="btn btn-secondary" href="/" role="button">Back to Homepage</a>
+        </div>
       </div>
     )
   }
